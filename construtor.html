@@ -1344,28 +1344,44 @@
                         </div>
                     </div>
                     
-                    <!-- Seção de suporte -->
-                    <div id="supportSection" style="display: none; margin-top: 25px; border-top: 2px solid var(--gray-color); padding-top: 20px;">
-                        <h4>Suporte</h4>
-                        
-                        <!-- Opções de periodicidade para suporte -->
-                        <div id="supportPeriodOptions" class="support-period-options">
-                            <h4>Periodicidade do Suporte</h4>
-                            <div class="support-period-option">
-                                <input type="radio" id="support_monthly" name="support_period" value="monthly" checked>
-                                <label for="support_monthly">Mensal</label>
-                            </div>
-                            <div class="support-period-option">
-                                <input type="radio" id="support_quarterly" name="support_period" value="quarterly">
-                                <label for="support_quarterly">Trimestral (5% de desconto)</label>
-                            </div>
-                            <div class="support-period-option">
-                                <input type="radio" id="support_yearly" name="support_period" value="yearly">
-                                <label for="support_yearly">Anual (15% de desconto)</label>
-                            </div>
+
+                    
+                    <!-- Botão WhatsApp -->
+                    <button id="whatsappButton" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Solicitar via WhatsApp
+                    </button>
+                </div>
+                
+                <!-- Seção de suporte completamente separada -->
+                <div id="supportSection" style="display: none; margin-top: 40px; border-top: 3px solid var(--primary-color); padding-top: 30px;">
+                    <h3>Suporte</h3>
+                    
+                    <div class="summary-section">
+                        <h4>Serviços de Suporte Selecionados</h4>
+                        <div id="selectedSupportServices" class="selected-services">
+                            <div class="no-services">Nenhum serviço de suporte selecionado</div>
                         </div>
-                        
-                        <div class="price-item" style="margin-top: 15px;">
+                    </div>
+                    
+                    <!-- Opções de periodicidade para suporte -->
+                    <div id="supportPeriodOptions" class="support-period-options">
+                        <h4>Periodicidade do Suporte</h4>
+                        <div class="support-period-option">
+                            <input type="radio" id="support_monthly" name="support_period" value="monthly" checked>
+                            <label for="support_monthly">Mensal</label>
+                        </div>
+                        <div class="support-period-option">
+                            <input type="radio" id="support_quarterly" name="support_period" value="quarterly">
+                            <label for="support_quarterly">Trimestral (5% de desconto)</label>
+                        </div>
+                        <div class="support-period-option">
+                            <input type="radio" id="support_yearly" name="support_period" value="yearly">
+                            <label for="support_yearly">Anual (15% de desconto)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="price-summary">
+                        <div class="price-item">
                             <div class="price-label">Suporte:</div>
                             <div class="price-value" id="supportPrice">R$ 0,00</div>
                         </div>
@@ -1375,10 +1391,11 @@
                         </div>
                     </div>
                     
-                    <!-- Botão WhatsApp -->
-                    <button id="whatsappButton" class="whatsapp-btn">
-                        <i class="fab fa-whatsapp"></i> Solicitar via WhatsApp
+                    <!-- Botão WhatsApp para suporte -->
+                    <button id="supportWhatsappButton" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Solicitar Suporte via WhatsApp
                     </button>
+                </div>
                 </div>
             </div>
         </div>
@@ -1692,6 +1709,31 @@
                 
                 if (hasSupport) {
                     supportSection.style.display = 'block';
+                    
+                    // Atualiza a lista de serviços de suporte selecionados
+                    const selectedSupportServices = document.getElementById('selectedSupportServices');
+                    selectedSupportServices.innerHTML = '';
+                    
+                    let supportServicesHTML = '';
+                    window.selectedServices.forEach(service => {
+                        if (service.isSupport) {
+                            supportServicesHTML += `
+                                <div class="selected-service-item">
+                                    <div class="service-name">${service.name}</div>
+                                    <div class="service-price">R$ ${service.price.toFixed(2)}/mês</div>
+                                    <button class="btn-remove-service" data-service="${service.id}">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            `;
+                        }
+                    });
+                    
+                    if (supportServicesHTML) {
+                        selectedSupportServices.innerHTML = supportServicesHTML;
+                    } else {
+                        selectedSupportServices.innerHTML = '<div class="no-services">Nenhum serviço de suporte selecionado</div>';
+                    }
                     
                     // Atualiza o elemento de preço do suporte
                     document.getElementById('supportPrice').textContent = `R$ ${supportTotal.toFixed(2)}`;
