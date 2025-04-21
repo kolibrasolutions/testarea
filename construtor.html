@@ -1209,48 +1209,6 @@
                             </div>
                         </div>
                         
-                        <!-- Categoria Suporte -->
-                        <div class="category-item">
-                            <div class="category-header">
-                                <h4><i class="fas fa-headset"></i> Suporte</h4>
-                                <i class="fas fa-chevron-down toggle-icon"></i>
-                            </div>
-                            <div class="category-content">
-                                <div class="service-item" data-service="basic_support" data-price="25" data-support="true">
-                                    <div class="service-info">
-                                        <div class="service-name">Suporte Básico</div>
-                                        <div class="service-description">Suporte para negócios de segmento, criação de postagens para Instagram e auxílio para crescimento.</div>
-                                        <div class="service-price">R$ 25,00/mês</div>
-                                    </div>
-                                    <div class="service-action">
-                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                
-                                <div class="service-item" data-service="intermediate_support" data-price="40" data-support="true">
-                                    <div class="service-info">
-                                        <div class="service-name">Suporte Intermediário</div>
-                                        <div class="service-description">Suporte para postagens em redes sociais e ajuda no direcionamento estratégico.</div>
-                                        <div class="service-price">R$ 40,00/mês</div>
-                                    </div>
-                                    <div class="service-action">
-                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                
-                                <div class="service-item" data-service="site_support" data-price="50" data-support="true">
-                                    <div class="service-info">
-                                        <div class="service-name">Suporte para Site</div>
-                                        <div class="service-description">Alterações ilimitadas para sites avançados, trocas de valores e adição de novos elementos.</div>
-                                        <div class="service-price">R$ 50,00/mês</div>
-                                    </div>
-                                    <div class="service-action">
-                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
                         <!-- Categoria Marketing -->
                         <div class="category-item">
                             <div class="category-header">
@@ -1292,6 +1250,48 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <!-- Categoria Suporte -->
+                        <div class="category-item">
+                            <div class="category-header">
+                                <h4><i class="fas fa-headset"></i> Suporte</h4>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="service-item" data-service="basic_support" data-price="25" data-support="true">
+                                    <div class="service-info">
+                                        <div class="service-name">Suporte Básico</div>
+                                        <div class="service-description">Suporte para negócios de segmento, criação de postagens para Instagram e auxílio para crescimento.</div>
+                                        <div class="service-price">R$ 25,00/mês</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-item" data-service="intermediate_support" data-price="40" data-support="true">
+                                    <div class="service-info">
+                                        <div class="service-name">Suporte Intermediário</div>
+                                        <div class="service-description">Suporte para postagens em redes sociais e ajuda no direcionamento estratégico.</div>
+                                        <div class="service-price">R$ 40,00/mês</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-item" data-service="site_support" data-price="50" data-support="true">
+                                    <div class="service-info">
+                                        <div class="service-name">Suporte para Site</div>
+                                        <div class="service-description">Alterações ilimitadas para sites avançados, trocas de valores e adição de novos elementos.</div>
+                                        <div class="service-price">R$ 50,00/mês</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -1321,34 +1321,9 @@
                             <div class="price-label">Serviços Adicionais:</div>
                             <div class="price-value" id="additionalServicesPrice">R$ 0,00</div>
                         </div>
-                        <div class="price-item" id="supportPriceContainer" style="display: none;">
-                            <div class="price-label">Suporte:</div>
-                            <div class="price-value" id="supportPrice">R$ 0,00</div>
-                        </div>
-                        <div class="price-item" id="supportMonthlyContainer" style="display: none;">
-                            <div class="price-label">Valor mensal do suporte:</div>
-                            <div class="price-value" id="supportMonthlyPrice">R$ 0,00/mês</div>
-                        </div>
                         <div class="price-total">
                             <div class="price-label">Total:</div>
                             <div class="price-value" id="totalPrice">R$ 0,00</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Opções de periodicidade para suporte -->
-                    <div id="supportPeriodOptions" class="support-period-options">
-                        <h4>Periodicidade do Suporte</h4>
-                        <div class="support-period-option">
-                            <input type="radio" id="support_monthly" name="support_period" value="monthly" checked>
-                            <label for="support_monthly">Mensal</label>
-                        </div>
-                        <div class="support-period-option">
-                            <input type="radio" id="support_quarterly" name="support_period" value="quarterly">
-                            <label for="support_quarterly">Trimestral (5% de desconto)</label>
-                        </div>
-                        <div class="support-period-option">
-                            <input type="radio" id="support_yearly" name="support_period" value="yearly">
-                            <label for="support_yearly">Anual (15% de desconto)</label>
                         </div>
                     </div>
                     
@@ -1366,6 +1341,37 @@
                         <div class="payment-method-option">
                             <input type="radio" id="payment_pix" name="payment_method" value="pix">
                             <label for="payment_pix">PIX</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Seção de suporte -->
+                    <div id="supportSection" style="display: none; margin-top: 25px; border-top: 2px solid var(--gray-color); padding-top: 20px;">
+                        <h4>Suporte</h4>
+                        
+                        <!-- Opções de periodicidade para suporte -->
+                        <div id="supportPeriodOptions" class="support-period-options">
+                            <h4>Periodicidade do Suporte</h4>
+                            <div class="support-period-option">
+                                <input type="radio" id="support_monthly" name="support_period" value="monthly" checked>
+                                <label for="support_monthly">Mensal</label>
+                            </div>
+                            <div class="support-period-option">
+                                <input type="radio" id="support_quarterly" name="support_period" value="quarterly">
+                                <label for="support_quarterly">Trimestral (5% de desconto)</label>
+                            </div>
+                            <div class="support-period-option">
+                                <input type="radio" id="support_yearly" name="support_period" value="yearly">
+                                <label for="support_yearly">Anual (15% de desconto)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="price-item" style="margin-top: 15px;">
+                            <div class="price-label">Suporte:</div>
+                            <div class="price-value" id="supportPrice">R$ 0,00</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">Valor mensal do suporte:</div>
+                            <div class="price-value" id="supportMonthlyPrice">R$ 0,00/mês</div>
                         </div>
                     </div>
                     
@@ -1681,13 +1687,11 @@
                 // Atualiza o elemento de preço dos serviços adicionais (excluindo suporte)
                 document.getElementById('additionalServicesPrice').textContent = `R$ ${additionalTotal.toFixed(2)}`;
                 
-                // Mostra ou esconde o container de preço do suporte
-                const supportPriceContainer = document.getElementById('supportPriceContainer');
-                const supportMonthlyContainer = document.getElementById('supportMonthlyContainer');
+                // Mostra ou esconde a seção de suporte
+                const supportSection = document.getElementById('supportSection');
                 
                 if (hasSupport) {
-                    supportPriceContainer.style.display = 'flex';
-                    supportMonthlyContainer.style.display = 'flex';
+                    supportSection.style.display = 'block';
                     
                     // Atualiza o elemento de preço do suporte
                     document.getElementById('supportPrice').textContent = `R$ ${supportTotal.toFixed(2)}`;
@@ -1709,12 +1713,11 @@
                     
                     document.getElementById('supportMonthlyPrice').textContent = monthlyText;
                 } else {
-                    supportPriceContainer.style.display = 'none';
-                    supportMonthlyContainer.style.display = 'none';
+                    supportSection.style.display = 'none';
                 }
                 
-                // Calcula o total geral
-                total += additionalTotal + supportTotal;
+                // Calcula o total geral (apenas pacote base + serviços adicionais, sem suporte)
+                total += additionalTotal;
                 
                 // Atualiza o elemento de preço total
                 document.getElementById('totalPrice').textContent = `R$ ${total.toFixed(2)}`;
