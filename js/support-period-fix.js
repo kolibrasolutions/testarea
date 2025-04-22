@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para verificar se há serviços de suporte selecionados e exibir a seção correspondente
     function checkSupportServices() {
         const supportPeriodSection = document.getElementById('supportPeriodSection');
-        if (!supportPeriodSection) return;
+        const supportValuesSection = document.getElementById('supportValuesSection');
+        
+        if (!supportPeriodSection || !supportValuesSection) return;
         
         // Verifica se há serviços de suporte selecionados
         let hasSupport = false;
@@ -11,14 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
             hasSupport = window.selectedServices.some(service => service.isSupport);
         }
         
-        // Exibe ou oculta a seção de periodicidade do suporte
+        // Exibe ou oculta as seções de suporte
         if (hasSupport) {
             supportPeriodSection.style.display = 'block';
+            supportValuesSection.style.display = 'block';
             
             // Atualiza os preços do suporte
             updateSupportPrices();
         } else {
             supportPeriodSection.style.display = 'none';
+            supportValuesSection.style.display = 'none';
         }
     }
     
