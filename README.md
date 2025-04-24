@@ -1,68 +1,36 @@
-# Otimizações de SEO - Kolibra Solutions
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Este documento detalha as melhorias de SEO implementadas no site da Kolibra Solutions para aumentar o ranqueamento no Google quando o nome da empresa for pesquisado.
+## Getting Started
 
-## Melhorias Implementadas
+First, run the development server:
 
-### 1. Meta Tags Otimizadas
-- **Title Tag**: Aprimorada para incluir palavras-chave relevantes
-- **Meta Description**: Expandida para ser mais descritiva e atrativa
-- **Meta Keywords**: Adicionadas palavras-chave relevantes para o negócio
-- **Meta Robots**: Configurada para permitir indexação e seguimento de links
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-### 2. Marcação Estruturada (Schema.org)
-- **Organization**: Informações completas da empresa (nome, endereço, contato)
-- **WebSite**: Dados estruturados do site
-- **BreadcrumbList**: Navegação estrutural para melhor indexação
-- **AboutPage**: Marcação para a seção de história
-- **AggregateRating**: Marcação para avaliações e estatísticas
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### 3. Estrutura HTML Semântica
-- Implementação de tags semânticas (`header`, `main`, `section`, `article`, `footer`)
-- Hierarquia de cabeçalhos correta (H1, H2, H3)
-- Atributos ARIA para acessibilidade
-- Roles para elementos interativos
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### 4. Otimização de Imagens
-- Atributos `alt` descritivos em todas as imagens
-- Dimensões explícitas (width/height) para melhor CLS (Cumulative Layout Shift)
-- Preload de imagens críticas
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 5. URLs Canônicas
-- Links canônicos para evitar conteúdo duplicado
+## Learn More
 
-### 6. Sitemap XML
-- Criação de sitemap.xml com todas as páginas importantes
-- Prioridades e frequências de atualização configuradas
+To learn more about Next.js, take a look at the following resources:
 
-### 7. Arquivo Robots.txt
-- Configuração para permitir indexação adequada
-- Bloqueio de diretórios que não devem ser indexados
-- Referência ao sitemap.xml
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-### 8. Melhorias de Performance
-- Preconnect para recursos externos
-- Preload de recursos críticos
-- Melhorias de acessibilidade para usuários de leitores de tela
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Como Implementar
+## Deploy on Vercel
 
-1. Substitua os arquivos atuais pelos arquivos otimizados
-2. Mantenha o sitemap.xml e robots.txt na raiz do site
-3. Após a implementação, registre o site no Google Search Console
-4. Envie o sitemap.xml para indexação
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Benefícios Esperados
-
-- Melhor ranqueamento no Google para buscas pelo nome da empresa
-- Maior visibilidade nos resultados de pesquisa com rich snippets
-- Melhor experiência para usuários de leitores de tela
-- Compartilhamento mais efetivo em redes sociais
-- Melhor performance geral do site
-
-## Recomendações Adicionais
-
-- Monitore o desempenho do site no Google Search Console
-- Atualize regularmente o conteúdo do site
-- Obtenha backlinks de sites relevantes e confiáveis
-- Considere a criação de um blog com conteúdo relevante para sua área de atuação
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
