@@ -551,7 +551,7 @@
         }
         
         .btn-add-service.added i::before {
-            content: "\f00d";
+            content: "\f00c";
         }
         
         /* Resumo do Plano */
@@ -564,72 +564,284 @@
             top: 100px;
         }
         
-        .summary-header {
+        .plan-summary h3 {
+            font-size: 1.4rem;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--gray-color);
         }
         
-        .summary-header h3 {
-            font-size: 1.4rem;
+        .summary-section {
+            margin-bottom: 25px;
+        }
+        
+        .summary-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .selected-plan {
+            background-color: var(--gray-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .selected-plan-name {
+            font-weight: 600;
             margin-bottom: 5px;
         }
         
-        .summary-header p {
+        .selected-plan-price {
             font-size: 0.9rem;
-            color: var(--gray-dark);
-            margin-bottom: 0;
-        }
-        
-        .summary-items {
-            margin-bottom: 20px;
-        }
-        
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--gray-color);
-        }
-        
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-        
-        .item-name {
-            font-weight: 500;
-        }
-        
-        .item-price {
-            font-weight: 600;
             color: var(--secondary-color);
+            font-weight: 600;
         }
         
-        .summary-total {
+        .selected-services {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .selected-service-item {
             background-color: var(--gray-color);
-            padding: 15px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .total-label {
-            font-weight: 600;
-            font-size: 1.1rem;
+        .selected-service-info {
+            flex: 1;
         }
         
-        .total-price {
-            font-weight: 700;
-            font-size: 1.3rem;
+        .selected-service-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 3px;
+        }
+        
+        .selected-service-price {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .selected-service-remove {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: rgba(255, 127, 0, 0.1);
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .selected-service-remove:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+        
+        .no-services {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+            font-style: italic;
+            padding: 10px;
+            text-align: center;
+            background-color: var(--gray-color);
+            border-radius: 8px;
+        }
+        
+        .price-summary {
+            margin-bottom: 25px;
+        }
+        
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .price-label {
+            font-weight: 500;
+        }
+        
+        .price-value {
+            font-weight: 600;
             color: var(--secondary-color);
         }
         
-        .summary-actions {
-            display: grid;
-            gap: 10px;
+        .price-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid var(--gray-color);
+        }
+        
+        .price-total .price-label, .price-total .price-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Opções de forma de pagamento */
+        .payment-method-options {
+            margin-bottom: 25px;
+        }
+        
+        .payment-method-options h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .payment-method-option {
+            margin-bottom: 10px;
+        }
+        
+        .payment-method-option label {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        
+        /* Opções de periodicidade para suporte */
+        .support-period-options {
+            margin-bottom: 25px;
+        }
+        
+        .support-period-options h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .support-period-option {
+            margin-bottom: 10px;
+        }
+        
+        .support-period-option label {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        
+        .support-period-options.active {
+            display: block;
+        }
+        
+        /* Botão WhatsApp */
+        .whatsapp-btn {
+            width: 100%;
+            background-color: #25D366;
+            color: var(--light-color);
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn i {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Modal de Sucesso */
+        .success-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .success-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .success-modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--gray-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+        
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--light-color);
+            font-size: 2rem;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .modal-text {
+            margin-bottom: 25px;
+            color: var(--gray-dark);
         }
         
         /* Responsividade */
@@ -642,45 +854,59 @@
                 position: static;
                 margin-top: 40px;
             }
-            
+        }
+        
+        @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 2.2rem;
             }
             
-            .page-header p {
-                font-size: 1rem;
+            .section-intro h2 {
+                font-size: 1.8rem;
             }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar .container {
-                flex-direction: column;
-                align-items: flex-start;
+            
+            .plan-options {
+                grid-template-columns: 1fr;
             }
             
             .nav-menu {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                margin-top: 20px;
+                position: fixed;
+                top: 100px;
+                left: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: calc(100vh - 100px);
                 background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 30px;
+                transition: left 0.3s ease;
+                z-index: 999;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
             }
             
             .nav-menu.active {
-                display: flex;
+                left: 0;
             }
             
             .nav-menu li {
-                margin: 10px 0;
+                margin: 0 0 20px 0;
                 width: 100%;
-                text-align: center;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 10px 0;
+                width: 100%;
+            }
+            
+            .btn-nav {
+                display: inline-block;
+                width: auto;
             }
             
             .nav-toggle {
                 display: block;
-                position: absolute;
-                top: 25px;
-                right: 20px;
             }
             
             .nav-toggle.active span:nth-child(1) {
@@ -694,11 +920,9 @@
             .nav-toggle.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(7px, -7px);
             }
-            
-            .plan-options {
-                grid-template-columns: 1fr;
-            }
-            
+        }
+        
+        @media (max-width: 576px) {
             .page-header {
                 padding: 120px 0 60px;
             }
@@ -706,16 +930,89 @@
             .page-header h1 {
                 font-size: 1.8rem;
             }
-        }
-        
-        @media (max-width: 576px) {
-            .page-header h1 {
+            
+            .section-intro h2 {
                 font-size: 1.5rem;
             }
             
-            .section-intro h2 {
-                font-size: 1.8rem;
+            .plan-builder-section {
+                padding: 60px 0;
             }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .navbar {
+                padding: 10px 0;
+            }
+            
+            .nav-menu {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+        }
+        
+        /* Estilos para suporte de periodicidade */
+        #supportPeriodSection {
+            margin-top: 20px;
+            border-top: 1px solid var(--gray-color);
+            padding-top: 20px;
+        }
+        
+        #supportPeriodSection h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .support-period-option {
+            margin-bottom: 10px;
+        }
+        
+        .support-period-option label {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background-color: var(--gray-color);
+            padding: 15px 0;
+            margin-top: 70px;
+        }
+        
+        .breadcrumbs a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .breadcrumbs span {
+            color: var(--gray-dark);
+        }
+        
+        /* Blog Header */
+        .blog-header {
+            padding: 50px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0066cc 100%);
+            color: var(--light-color);
+            text-align: center;
+        }
+        
+        .blog-header h1 {
+            color: var(--light-color);
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .blog-header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -723,153 +1020,212 @@
     <!-- Navegação -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="img/logo-new.png" alt="KOLIBRA SOLUTIONS">
+            <a href="index.html" class="logo" aria-label="Kolibra Solutions - Página inicial">
+                <img src="img/logo-new.png" alt="KOLIBRA SOLUTIONS - Soluções digitais para pequenos negócios" width="150" height="50">
             </a>
             
-            <div class="nav-toggle" id="navToggle">
+            <div class="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
             
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">Portfólio</a></li>
-                <li><a href="blog/index.html">Blog</a></li>
-                <li><a href="construtor.html" class="active">Construir Plano</a></li>
+            <ul class="nav-menu" id="nav-menu" role="menubar">
+                <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+                <li role="none"><a href="portfolio.html" role="menuitem">Portfólio</a></li>
+                <li role="none"><a href="blog/index.html" role="menuitem">Blog</a></li>
+
             </ul>
         </div>
     </nav>
     
-    <!-- Header da Página -->
-    <header class="page-header">
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
         <div class="container">
-            <h1>Construtor de Pacotes</h1>
-            <p>Tudo o que você precisa para iniciar ou profissionalizar seu negócio com uma identidade visual impactante</p>
-        </div>
-    </header>
-    
-    <!-- Breadcrumb -->
-    <div class="breadcrumb-container" style="background-color: #f5f5f5; padding: 10px 0;">
-        <div class="container">
-            <ul class="breadcrumb" style="display: flex; list-style: none; margin: 0; padding: 0;">
-                <li style="margin-right: 10px;"><a href="index.html" style="color: #666;">Home</a> <span style="margin-left: 10px; color: #666;">></span></li>
-                <li style="color: #004494;">Construtor de Pacotes</li>
-            </ul>
+            <a href="index.html">Home</a> &gt; <span>Construtor de Pacotes</span>
         </div>
     </div>
     
+    <!-- Header da Página -->
+    <header class="blog-header">
+        <div class="container">
+            <h1>Construtor de Pacotes</h1>
+            <p>Monte seu pacote personalizado de soluções digitais para seu negócio</p>
+        </div>
+    </header>
+    
     <!-- Construtor de Pacotes -->
-    <section class="plan-builder-section">
+    <section class="plan-builder-section" id="builder" aria-labelledby="builder-heading">
         <div class="container">
             <div class="section-intro">
-                <h2>Monte seu Pacote Personalizado</h2>
-                <p>Escolha entre nossas opções de serviços e crie um pacote que atenda perfeitamente às necessidades do seu negócio.</p>
+                <h2 id="builder-heading">Monte seu Pacote Personalizado</h2>
+                <p>Escolha um plano base e adicione os serviços que melhor atendem às necessidades do seu negócio.</p>
             </div>
             
             <div class="builder-container">
-                <!-- Opções de Serviços -->
-                <div class="plan-base">
-                    <h3>Escolha seu Plano Base</h3>
-                    
-                    <div class="plan-options">
-                        <!-- Opção 1 -->
-                        <div class="plan-option" data-price="300" data-name="Site Institucional">
-                            <div class="option-header">
-                                <h4>Site Institucional</h4>
-                                <div class="option-price">R$ 300,00</div>
+                <div class="builder-sidebar">
+                    <div class="plan-base">
+                        <h3>Escolha seu Pacote Base</h3>
+                        <div class="plan-options">
+                            <div class="plan-option" data-plan="custom" data-price="0">
+                                <div class="option-header">
+                                    <h4>Crie seu pacote</h4>
+                                    <div class="option-price">Personalizado</div>
+                                </div>
+                                <div class="option-features">
+                                    <ul>
+                                        <li>Serviços avulsos</li>
+                                        <li>Pague apenas pelo que precisar</li>
+                                        <li>Sem compromisso mensal</li>
+                                        <li>Ideal para necessidades específicas</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-outline select-plan-btn">Selecionar</button>
                             </div>
-                            <div class="option-features">
-                                <ul>
-                                    <li>Até 5 páginas</li>
-                                    <li>Design responsivo</li>
-                                    <li>Formulário de contato</li>
-                                    <li>Otimização para SEO</li>
-                                    <li>Integração com redes sociais</li>
-                                </ul>
+                            <div class="plan-option" data-plan="starter" data-price="199.90">
+                                <div class="option-header">
+                                    <h4>PACOTE BASIC</h4>
+                                    <div class="option-price">R$ 199,90/mês</div>
+                                </div>
+                                <div class="option-features">
+                                    <ul>
+                                        <li>Identidade Visual Básica</li>
+                                        <li>Foco em Instagram</li>
+                                        <li>Gestão de 1 Rede Social</li>
+                                        <li>Ideal para negócios iniciantes</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-outline select-plan-btn">Selecionar</button>
                             </div>
-                            <button class="btn btn-outline select-plan-btn">Selecionar</button>
-                        </div>
-                        
-                        <!-- Opção 2 -->
-                        <div class="plan-option" data-price="500" data-name="E-commerce Básico">
-                            <div class="option-header">
-                                <h4>E-commerce Básico</h4>
-                                <div class="option-price">R$ 500,00</div>
+                            
+                            <div class="plan-option" data-plan="business" data-price="399.90">
+                                <div class="option-header">
+                                    <h4>PACOTE STARTER</h4>
+                                    <div class="option-price">R$ 399,90/mês</div>
+                                </div>
+                                <div class="option-features">
+                                    <ul>
+                                        <li>Identidade Visual Completa</li>
+                                        <li>Site Institucional (10 páginas)</li>
+                                        <li>Ideal para negócios maiores</li>
+                                        <li>3 Redes Sociais</li>
+                                        <li>Blog Integrado</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-outline select-plan-btn">Selecionar</button>
                             </div>
-                            <div class="option-features">
-                                <ul>
-                                    <li>Até 50 produtos</li>
-                                    <li>Painel administrativo</li>
-                                    <li>Pagamento via PIX e boleto</li>
-                                    <li>Cálculo de frete</li>
-                                    <li>Relatórios de vendas</li>
-                                </ul>
+                            
+                            <div class="plan-option" data-plan="premium" data-price="799.90">
+                                <div class="option-header">
+                                    <h4>PACOTE PREMIUM</h4>
+                                    <div class="option-price">R$ 799,90/mês</div>
+                                </div>
+                                <div class="option-features">
+                                    <ul>
+                                        <li>Identidade Visual Premium</li>
+                                        <li>Site Institucional (15+ páginas)</li>
+                                        <li>Suporte 24/7</li>
+                                        <li>Todas as Redes Sociais</li>
+                                        <li>Blog Integrado</li>
+                                        <li>E-commerce Básico</li>
+                                        <li>SEO Básico</li>
+                                    </ul>
+                                </div>
+                                <button class="btn btn-sm btn-outline select-plan-btn">Selecionar</button>
                             </div>
-                            <button class="btn btn-outline select-plan-btn">Selecionar</button>
-                        </div>
-                        
-                        <!-- Opção 3 -->
-                        <div class="plan-option" data-price="250" data-name="Landing Page">
-                            <div class="option-header">
-                                <h4>Landing Page</h4>
-                                <div class="option-price">R$ 250,00</div>
-                            </div>
-                            <div class="option-features">
-                                <ul>
-                                    <li>Página única otimizada</li>
-                                    <li>Formulário de captura</li>
-                                    <li>Call-to-action estratégicos</li>
-                                    <li>Design persuasivo</li>
-                                    <li>Integração com email marketing</li>
-                                </ul>
-                            </div>
-                            <button class="btn btn-outline select-plan-btn">Selecionar</button>
                         </div>
                     </div>
                     
-                    <!-- Categorias de Serviços Adicionais -->
-                    <div class="service-categories mt-5">
-                        <h3>Adicione Serviços Complementares</h3>
+                    <div class="service-categories">
+                        <h3>Adicione Serviços</h3>
                         
-                        <!-- Categoria 1: Identidade Visual -->
+                        <!-- Categoria Branding -->
                         <div class="category-item">
                             <div class="category-header">
-                                <h4><i class="fas fa-palette"></i> Identidade Visual</h4>
+                                <h4><i class="fas fa-palette"></i> Branding</h4>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="category-content">
-                                <!-- Serviço 1 -->
-                                <div class="service-item" data-price="150" data-name="Logo Profissional">
+                                <div class="service-item" data-service="logo" data-price="100">
                                     <div class="service-info">
-                                        <div class="service-name">Logo Profissional</div>
-                                        <div class="service-description">Criação de logotipo exclusivo com manual de identidade visual básico.</div>
+                                        <div class="service-name">Logo</div>
+                                        <div class="service-description">Criação de logo profissional para sua marca.</div>
+                                        <div class="service-price">R$ 100,00</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-item" data-service="branding_pro" data-price="300">
+                                    <div class="service-info">
+                                        <div class="service-name">Branding Profissional</div>
+                                        <div class="service-description">Identidade visual completa, incluindo logo, cores, tipografia e aplicações.</div>
+                                        <div class="service-price">R$ 300,00</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-item" data-service="social_media_identity" data-price="150">
+                                    <div class="service-info">
+                                        <div class="service-name">Identidade Visual para Redes Sociais</div>
+                                        <div class="service-description">Templates personalizados para suas redes sociais.</div>
                                         <div class="service-price">R$ 150,00</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
-                                
-                                <!-- Serviço 2 -->
-                                <div class="service-item" data-price="100" data-name="Cartão de Visita">
+                            </div>
+                        </div>
+                        
+                        <!-- Categoria Web -->
+                        <div class="category-item">
+                            <div class="category-header">
+                                <h4><i class="fas fa-globe"></i> Web</h4>
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                            <div class="category-content">
+                                <div class="service-item" data-service="landing_page" data-price="300">
                                     <div class="service-info">
-                                        <div class="service-name">Cartão de Visita</div>
-                                        <div class="service-description">Design de cartão de visita digital e físico (arquivo pronto para impressão).</div>
-                                        <div class="service-price">R$ 100,00</div>
+                                        <div class="service-name">Landing Page</div>
+                                        <div class="service-description">Página de conversão otimizada para campanhas específicas.</div>
+                                        <div class="service-price">R$ 300,00</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                                 
-                                <!-- Serviço 3 -->
-                                <div class="service-item" data-price="200" data-name="Kit Papelaria">
+                                <div class="service-item" data-service="basic_site" data-price="300">
                                     <div class="service-info">
-                                        <div class="service-name">Kit Papelaria</div>
-                                        <div class="service-description">Design de papel timbrado, envelope, pasta e assinatura de email.</div>
-                                        <div class="service-price">R$ 200,00</div>
+                                        <div class="service-name">Site Básico</div>
+                                        <div class="service-description">Site simples com até 5 páginas para apresentar seu negócio.</div>
+                                        <div class="service-price">R$ 300,00</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-item" data-service="intermediate_site" data-price="600">
+                                    <div class="service-info">
+                                        <div class="service-name">Site Intermediário</div>
+                                        <div class="service-description">Site completo com até 10 páginas, blog e formulários.</div>
+                                        <div class="service-price">R$ 600,00</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-item" data-service="advanced_site" data-price="900">
+                                    <div class="service-info">
+                                        <div class="service-name">Site Avançado</div>
+                                        <div class="service-description">Site completo com mais de 15 páginas, blog, área de membros e recursos avançados.</div>
+                                        <div class="service-price">R$ 900,00</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
@@ -878,43 +1234,40 @@
                             </div>
                         </div>
                         
-                        <!-- Categoria 2: Marketing Digital -->
+                        <!-- Categoria Marketing -->
                         <div class="category-item">
                             <div class="category-header">
-                                <h4><i class="fas fa-bullhorn"></i> Marketing Digital</h4>
+                                <h4><i class="fas fa-bullhorn"></i> Marketing</h4>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="category-content">
-                                <!-- Serviço 1 -->
-                                <div class="service-item" data-price="120" data-name="Configuração de Redes Sociais">
+                                <div class="service-item" data-service="seo" data-price="450">
                                     <div class="service-info">
-                                        <div class="service-name">Configuração de Redes Sociais</div>
-                                        <div class="service-description">Criação e otimização de perfis em até 3 redes sociais.</div>
-                                        <div class="service-price">R$ 120,00</div>
+                                        <div class="service-name">SEO Mensal</div>
+                                        <div class="service-description">Otimização mensal do seu site para mecanismos de busca.</div>
+                                        <div class="service-price">R$ 450,00/mês</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                                 
-                                <!-- Serviço 2 -->
-                                <div class="service-item" data-price="180" data-name="Kit Posts para Redes Sociais">
+                                <div class="service-item" data-service="social_media" data-price="600">
                                     <div class="service-info">
-                                        <div class="service-name">Kit Posts para Redes Sociais</div>
-                                        <div class="service-description">10 templates editáveis para posts em redes sociais.</div>
-                                        <div class="service-price">R$ 180,00</div>
+                                        <div class="service-name">Gestão de Redes Sociais</div>
+                                        <div class="service-description">Criação e gestão de conteúdo para suas redes sociais.</div>
+                                        <div class="service-price">R$ 600,00/mês</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                                 
-                                <!-- Serviço 3 -->
-                                <div class="service-item" data-price="250" data-name="Configuração Google Meu Negócio">
+                                <div class="service-item" data-service="ads" data-price="800">
                                     <div class="service-info">
-                                        <div class="service-name">Configuração Google Meu Negócio</div>
-                                        <div class="service-description">Criação e otimização de perfil no Google Meu Negócio com fotos e informações.</div>
-                                        <div class="service-price">R$ 250,00</div>
+                                        <div class="service-name">Gestão de Anúncios</div>
+                                        <div class="service-description">Criação e gestão de campanhas no Google Ads e Facebook Ads.</div>
+                                        <div class="service-price">R$ 800,00/mês</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
@@ -923,43 +1276,51 @@
                             </div>
                         </div>
                         
-                        <!-- Categoria 3: Suporte e Manutenção -->
+                        <!-- Categoria Suporte -->
                         <div class="category-item">
                             <div class="category-header">
-                                <h4><i class="fas fa-headset"></i> Suporte e Manutenção</h4>
+                                <h4><i class="fas fa-headset"></i> Suporte</h4>
                                 <i class="fas fa-chevron-down toggle-icon"></i>
                             </div>
                             <div class="category-content">
-                                <!-- Serviço 1 -->
-                                <div class="service-item" data-price="80" data-name="Suporte Básico (Mensal)">
+                                <div class="service-item" data-service="basic_support" data-price="25" data-support="true">
                                     <div class="service-info">
-                                        <div class="service-name">Suporte Básico (Mensal)</div>
-                                        <div class="service-description">Atualizações de segurança e backup semanal.</div>
-                                        <div class="service-price">R$ 80,00/mês</div>
+                                        <div class="service-name">Suporte Básico</div>
+                                        <div class="service-description">Suporte para negócios de segmento, criação de postagens para Instagram e auxílio para crescimento.</div>
+                                        <div class="service-price">R$ 25,00/mês</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                                 
-                                <!-- Serviço 2 -->
-                                <div class="service-item" data-price="150" data-name="Suporte Premium (Mensal)">
+                                <div class="service-item" data-service="intermediate_support" data-price="40" data-support="true">
                                     <div class="service-info">
-                                        <div class="service-name">Suporte Premium (Mensal)</div>
-                                        <div class="service-description">Atualizações de segurança, backup diário e até 5 alterações de conteúdo por mês.</div>
-                                        <div class="service-price">R$ 150,00/mês</div>
+                                        <div class="service-name">Suporte Intermediário</div>
+                                        <div class="service-description">Suporte para postagens em redes sociais e ajuda no direcionamento estratégico.</div>
+                                        <div class="service-price">R$ 40,00/mês</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
                                     </div>
                                 </div>
                                 
-                                <!-- Serviço 3 -->
-                                <div class="service-item" data-price="100" data-name="Treinamento">
+                                <div class="service-item" data-service="site_support" data-price="50" data-support="true">
                                     <div class="service-info">
-                                        <div class="service-name">Treinamento</div>
-                                        <div class="service-description">Sessão de 2 horas para ensinar a gerenciar o site/sistema.</div>
-                                        <div class="service-price">R$ 100,00</div>
+                                        <div class="service-name">Suporte para Site</div>
+                                        <div class="service-description">Alterações ilimitadas para sites avançados, trocas de valores e adição de novos elementos.</div>
+                                        <div class="service-price">R$ 50,00/mês</div>
+                                    </div>
+                                    <div class="service-action">
+                                        <button class="btn-add-service"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                
+                                <div class="service-item" data-service="premium_support" data-price="100" data-support="true">
+                                    <div class="service-info">
+                                        <div class="service-name">Suporte Premium</div>
+                                        <div class="service-description">Suporte completo para todas as áreas do seu negócio digital, incluindo site, redes sociais e estratégias.</div>
+                                        <div class="service-price">R$ 100,00/mês</div>
                                     </div>
                                     <div class="service-action">
                                         <button class="btn-add-service"><i class="fas fa-plus"></i></button>
@@ -970,203 +1331,405 @@
                     </div>
                 </div>
                 
-                <!-- Resumo do Plano -->
                 <div class="plan-summary">
-                    <div class="summary-header">
-                        <h3>Resumo do Seu Plano</h3>
-                        <p>Confira os itens selecionados e o valor total</p>
-                    </div>
+                    <h3>Resumo do Pacote</h3>
                     
-                    <div class="summary-items" id="summaryItems">
-                        <div class="summary-item empty-cart">
-                            <span>Nenhum item selecionado</span>
+                    <div class="summary-section">
+                        <h4>Pacote Base</h4>
+                        <div id="selectedPlan" class="selected-plan">
+                            <div class="no-services">Nenhum plano selecionado</div>
                         </div>
                     </div>
                     
-                    <div class="summary-total">
-                        <span class="total-label">Total:</span>
-                        <span class="total-price" id="totalPrice">R$ 0,00</span>
+                    <div class="summary-section">
+                        <h4>Serviços Adicionais</h4>
+                        <div id="selectedServices" class="selected-services">
+                            <div class="no-services">Nenhum serviço adicionado</div>
+                        </div>
                     </div>
                     
-                    <div class="summary-actions">
-                        <button class="btn btn-secondary" id="btnContinue">Continuar</button>
-                        <button class="btn btn-outline" id="btnReset">Limpar Seleção</button>
+                    <div class="price-summary">
+                        <div class="price-item">
+                            <div class="price-label">Pacote Base:</div>
+                            <div class="price-value" id="basePlanPrice">R$ 0,00</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">Serviços Adicionais:</div>
+                            <div class="price-value" id="additionalServicesPrice">R$ 0,00</div>
+                        </div>
+                        <div class="price-total">
+                            <div class="price-label">Total:</div>
+                            <div class="price-value" id="totalPrice">R$ 0,00</div>
+                        </div>
                     </div>
+                    
+                    <!-- Opções de forma de pagamento -->
+                    <div class="payment-method-options">
+                        <h4>Forma de Pagamento</h4>
+                        <div class="payment-method-option">
+                            <input type="radio" id="payment_credit" name="payment_method" value="credit" checked>
+                            <label for="payment_credit">Cartão de Crédito</label>
+                        </div>
+                        <div class="payment-method-option">
+                            <input type="radio" id="payment_debit" name="payment_method" value="debit">
+                            <label for="payment_debit">Cartão de Débito</label>
+                        </div>
+                        <div class="payment-method-option">
+                            <input type="radio" id="payment_pix" name="payment_method" value="pix">
+                            <label for="payment_pix">PIX</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Opções de periodicidade para suporte -->
+                    <div id="supportPeriodSection" style="display: none; margin-top: 20px;">
+                        <h4>Periodicidade do Suporte</h4>
+                        <div class="support-period-option">
+                            <input type="radio" id="support_monthly" name="support_period" value="monthly" checked>
+                            <label for="support_monthly">Mensal</label>
+                        </div>
+                        <div class="support-period-option">
+                            <input type="radio" id="support_quarterly" name="support_period" value="quarterly">
+                            <label for="support_quarterly">Trimestral (5% de desconto)</label>
+                        </div>
+                        <div class="support-period-option">
+                            <input type="radio" id="support_yearly" name="support_period" value="yearly">
+                            <label for="support_yearly">Anual (15% de desconto)</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Valores do suporte -->
+                    <div id="supportValuesSection" style="display: none; margin-top: 15px; margin-bottom: 20px;">
+                        <div class="price-total" style="margin-top: 0;">
+                            <div class="price-label">Suporte:</div>
+                            <div class="price-value" id="supportPrice">R$ 0,00</div>
+                        </div>
+                        <div class="price-item" style="margin-top: 5px;">
+                            <div class="price-label">Valor mensal do suporte:</div>
+                            <div class="price-value" id="supportMonthlyPrice">R$ 0,00/mês</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botão WhatsApp -->
+                    <button id="whatsappButton" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Solicitar via WhatsApp
+                    </button>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer style="background-color: #1a1a1a; color: rgba(255, 255, 255, 0.7); padding: 20px 0; text-align: center; margin-top: 50px;">
-        <div class="container">
-            <p>&copy; 2025 KOLIBRA SOLUTIONS. Todos os direitos reservados.</p>
-            <p>Rua Julião Calixto de Abdala, 87, Quinta da Bela Vista, Muzambinho-MG</p>
-            <p>kolibrasolutions@gmail.com | (35) 99979-6570</p>
-            <p>Segunda a Sexta: 8h às 12h</p>
+    <!-- Modal de Sucesso -->
+    <div id="successModal" class="success-modal">
+        <div class="modal-content">
+            <div id="closeModal" class="modal-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="modal-title">Pedido Enviado!</h3>
+            <p class="modal-text">Seu pedido foi enviado com sucesso. Você será redirecionado para o WhatsApp para finalizar seu atendimento.</p>
+            <button class="btn btn-primary" onclick="document.getElementById('successModal').classList.remove('active')">Fechar</button>
         </div>
-    </footer>
+    </div>
     
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Menu Mobile
-            const navToggle = document.getElementById('navToggle');
-            const navMenu = document.getElementById('navMenu');
+            // Toggle do menu mobile
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
             
-            navToggle.addEventListener('click', function() {
-                navToggle.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
-            
-            // Categorias de Serviços
-            const categoryItems = document.querySelectorAll('.category-item');
-            
-            categoryItems.forEach(item => {
-                const header = item.querySelector('.category-header');
-                
-                header.addEventListener('click', function() {
-                    item.classList.toggle('active');
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    navToggle.setAttribute('aria-expanded', navToggle.classList.contains('active'));
                 });
-            });
-            
-            // Seleção de Plano Base
-            const planOptions = document.querySelectorAll('.plan-option');
-            let selectedPlan = null;
-            
-            planOptions.forEach(option => {
-                const selectBtn = option.querySelector('.select-plan-btn');
-                
-                selectBtn.addEventListener('click', function() {
-                    // Remover seleção anterior
-                    if (selectedPlan) {
-                        selectedPlan.classList.remove('selected');
-                        selectedPlan.querySelector('.select-plan-btn').textContent = 'Selecionar';
-                        selectedPlan.querySelector('.select-plan-btn').classList.remove('btn-secondary');
-                        selectedPlan.querySelector('.select-plan-btn').classList.add('btn-outline');
-                    }
-                    
-                    // Selecionar novo plano
-                    if (selectedPlan !== option) {
-                        option.classList.add('selected');
-                        selectBtn.textContent = 'Selecionado';
-                        selectBtn.classList.remove('btn-outline');
-                        selectBtn.classList.add('btn-secondary');
-                        selectedPlan = option;
-                    } else {
-                        selectedPlan = null;
-                    }
-                    
-                    updateSummary();
-                });
-            });
-            
-            // Adicionar/Remover Serviços
-            const serviceButtons = document.querySelectorAll('.btn-add-service');
-            
-            serviceButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    button.classList.toggle('added');
-                    updateSummary();
-                });
-            });
-            
-            // Atualizar Resumo
-            function updateSummary() {
-                const summaryItems = document.getElementById('summaryItems');
-                const totalPrice = document.getElementById('totalPrice');
-                let total = 0;
-                let items = [];
-                
-                // Limpar resumo
-                summaryItems.innerHTML = '';
-                
-                // Adicionar plano base
-                if (selectedPlan) {
-                    const planName = selectedPlan.getAttribute('data-name');
-                    const planPrice = parseFloat(selectedPlan.getAttribute('data-price'));
-                    
-                    items.push({
-                        name: planName,
-                        price: planPrice
-                    });
-                    
-                    total += planPrice;
-                }
-                
-                // Adicionar serviços selecionados
-                const selectedServices = document.querySelectorAll('.btn-add-service.added');
-                
-                selectedServices.forEach(service => {
-                    const serviceItem = service.closest('.service-item');
-                    const serviceName = serviceItem.getAttribute('data-name');
-                    const servicePrice = parseFloat(serviceItem.getAttribute('data-price'));
-                    
-                    items.push({
-                        name: serviceName,
-                        price: servicePrice
-                    });
-                    
-                    total += servicePrice;
-                });
-                
-                // Atualizar itens no resumo
-                if (items.length === 0) {
-                    summaryItems.innerHTML = '<div class="summary-item empty-cart"><span>Nenhum item selecionado</span></div>';
-                } else {
-                    items.forEach(item => {
-                        const itemElement = document.createElement('div');
-                        itemElement.className = 'summary-item';
-                        itemElement.innerHTML = `
-                            <span class="item-name">${item.name}</span>
-                            <span class="item-price">R$ ${item.price.toFixed(2)}</span>
-                        `;
-                        summaryItems.appendChild(itemElement);
-                    });
-                }
-                
-                // Atualizar total
-                totalPrice.textContent = `R$ ${total.toFixed(2)}`;
             }
             
-            // Botão Limpar Seleção
-            const btnReset = document.getElementById('btnReset');
+            // Toggle das categorias de serviços
+            const categoryHeaders = document.querySelectorAll('.category-header');
             
-            btnReset.addEventListener('click', function() {
-                // Limpar plano base
-                if (selectedPlan) {
-                    selectedPlan.classList.remove('selected');
-                    selectedPlan.querySelector('.select-plan-btn').textContent = 'Selecionar';
-                    selectedPlan.querySelector('.select-plan-btn').classList.remove('btn-secondary');
-                    selectedPlan.querySelector('.select-plan-btn').classList.add('btn-outline');
-                    selectedPlan = null;
-                }
-                
-                // Limpar serviços
-                const selectedServices = document.querySelectorAll('.btn-add-service.added');
-                selectedServices.forEach(service => {
-                    service.classList.remove('added');
+            categoryHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const categoryItem = this.parentElement;
+                    categoryItem.classList.toggle('active');
                 });
-                
-                updateSummary();
             });
             
-            // Botão Continuar
-            const btnContinue = document.getElementById('btnContinue');
+            // Seleção de plano base
+            const planOptions = document.querySelectorAll('.plan-option');
+            const selectedPlanElement = document.getElementById('selectedPlan');
+            const basePlanPriceElement = document.getElementById('basePlanPrice');
             
-            btnContinue.addEventListener('click', function() {
-                const items = document.querySelectorAll('.summary-item:not(.empty-cart)');
+            window.selectedPlan = null;
+            let basePlanPrice = 0;
+            
+            planOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove a classe 'selected' de todas as opções
+                    planOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Adiciona a classe 'selected' à opção clicada
+                    this.classList.add('selected');
+                    
+                    // Atualiza o plano selecionado
+                    const planName = this.querySelector('h4').textContent;
+                    const planPrice = parseFloat(this.dataset.price);
+                    
+                    window.selectedPlan = {
+                        name: planName,
+                        price: planPrice
+                    };
+                    
+                    // Atualiza o elemento de plano selecionado
+                    selectedPlanElement.innerHTML = `
+                        <div class="selected-plan-name">${planName}</div>
+                        <div class="selected-plan-price">R$ ${planPrice.toFixed(2)}</div>
+                    `;
+                    
+                    // Atualiza o preço base
+                    basePlanPrice = planPrice;
+                    basePlanPriceElement.textContent = `R$ ${basePlanPrice.toFixed(2)}`;
+                    
+                    // Atualiza o preço total
+                    updateTotalPrice();
+                });
+            });
+            
+            // Adicionar/remover serviços
+            const addServiceButtons = document.querySelectorAll('.btn-add-service');
+            const selectedServicesElement = document.getElementById('selectedServices');
+            const additionalServicesPriceElement = document.getElementById('additionalServicesPrice');
+            const supportPeriodOptionsElement = document.getElementById('supportPeriodOptions');
+            
+            window.selectedServices = [];
+            let additionalServicesPrice = 0;
+            
+            addServiceButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceItem = this.closest('.service-item');
+                    const serviceId = serviceItem.dataset.service;
+                    const serviceName = serviceItem.querySelector('.service-name').textContent;
+                    const servicePrice = parseFloat(serviceItem.dataset.price);
+                    const isSupport = serviceItem.dataset.support === 'true';
+                    
+                    // Verifica se o serviço já está selecionado
+                    const serviceIndex = window.selectedServices.findIndex(service => service.id === serviceId);
+                    
+                    if (serviceIndex === -1) {
+                        // Adiciona o serviço
+                        window.selectedServices.push({
+                            id: serviceId,
+                            name: serviceName,
+                            price: servicePrice,
+                            isSupport: isSupport
+                        });
+                        
+                        // Marca o botão como adicionado
+                        this.classList.add('added');
+                        
+                        // Mostra as opções de periodicidade se algum serviço de suporte for selecionado
+                        if (isSupport) {
+                            supportPeriodOptionsElement.classList.add('active');
+                        }
+                    } else {
+                        // Remove o serviço
+                        window.selectedServices.splice(serviceIndex, 1);
+                        
+                        // Desmarca o botão
+                        this.classList.remove('added');
+                        
+                        // Verifica se ainda há algum serviço de suporte selecionado
+                        const hasSupport = window.selectedServices.some(service => service.isSupport);
+                        if (!hasSupport) {
+                            supportPeriodOptionsElement.classList.remove('active');
+                        }
+                    }
+                    
+                    // Atualiza a lista de serviços selecionados
+                    updateSelectedServices();
+                    
+                    // Atualiza o preço total
+                    updateTotalPrice();
+                });
+            });
+            
+            // Função para atualizar a lista de serviços selecionados
+            function updateSelectedServices() {
+                // Limpa a lista de serviços selecionados
+                selectedServicesElement.innerHTML = '';
                 
-                if (items.length === 0) {
-                    alert('Por favor, selecione pelo menos um item para continuar.');
+                // Verifica se há serviços selecionados
+                if (window.selectedServices.length === 0) {
+                    selectedServicesElement.innerHTML = '<div class="no-services">Nenhum serviço adicionado</div>';
                     return;
                 }
                 
-                // Aqui você pode implementar a lógica para prosseguir com o pedido
-                // Por exemplo, redirecionar para uma página de checkout ou abrir um modal
-                alert('Obrigado por montar seu pacote! Em breve entraremos em contato para finalizar seu pedido.');
+                // Adiciona os serviços selecionados à lista
+                let servicesHTML = '';
+                let additionalServicesPrice = 0;
+                
+                window.selectedServices.forEach(service => {
+                    servicesHTML += `
+                        <div class="selected-service-item" data-service="${service.id}">
+                            <div class="selected-service-info">
+                                <div class="selected-service-name">${service.name}</div>
+                                <div class="selected-service-price">R$ ${service.price.toFixed(2)}${service.isSupport ? '/mês' : ''}</div>
+                            </div>
+                            <div class="selected-service-remove" onclick="removeService('${service.id}')">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                    `;
+                    
+                    additionalServicesPrice += service.price;
+                });
+                
+                selectedServicesElement.innerHTML = servicesHTML;
+                
+                additionalServicesPriceElement.textContent = `R$ ${additionalServicesPrice.toFixed(2)}`;
+            }
+            
+            // Função para remover um serviço
+            window.removeService = function(serviceId) {
+                // Encontra o índice do serviço
+                const serviceIndex = window.selectedServices.findIndex(service => service.id === serviceId);
+                
+                if (serviceIndex !== -1) {
+                    const isSupport = window.selectedServices[serviceIndex].isSupport;
+                    
+                    // Remove o serviço
+                    window.selectedServices.splice(serviceIndex, 1);
+                    
+                    // Desmarca o botão
+                    const serviceButton = document.querySelector(`.service-item[data-service="${serviceId}"] .btn-add-service`);
+                    if (serviceButton) {
+                        serviceButton.classList.remove('added');
+                    }
+                    
+                    // Verifica se ainda há algum serviço de suporte selecionado
+                    if (isSupport) {
+                        const hasSupport = window.selectedServices.some(service => service.isSupport);
+                        if (!hasSupport) {
+                            supportPeriodOptionsElement.classList.remove('active');
+                        }
+                    }
+                    
+                    // Atualiza a lista de serviços selecionados
+                    updateSelectedServices();
+                    
+                    // Atualiza o preço total
+                    updateTotalPrice();
+                }
+            };
+            
+            // Opções de periodicidade para suporte
+            const supportPeriodOptions = document.querySelectorAll('input[name="support_period"]');
+            
+            supportPeriodOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    updateTotalPrice();
+                });
             });
+            
+            // Função para atualizar o preço total
+            function updateTotalPrice() {
+                let total = basePlanPrice;
+                let additionalTotal = 0;
+                let supportTotal = 0;
+                let supportMonthlyValue = 0;
+                let hasSupport = false;
+                
+                // Adiciona o preço dos serviços adicionais
+                window.selectedServices.forEach(service => {
+                    if (service.isSupport) {
+                        hasSupport = true;
+                        // Aplica desconto conforme a periodicidade selecionada
+                        const supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
+                        let price = service.price;
+                        supportMonthlyValue += price;
+                        
+                        if (supportPeriod === 'quarterly') {
+                            // 5% de desconto para trimestral
+                            price = price * 3 * 0.95;
+                            supportTotal += price;
+                        } else if (supportPeriod === 'yearly') {
+                            // 15% de desconto para anual
+                            price = price * 12 * 0.85;
+                            supportTotal += price;
+                        } else {
+                            // Mensal (sem desconto)
+                            supportTotal += price;
+                        }
+                    } else {
+                        additionalTotal += service.price;
+                    }
+                });
+                
+                // Atualiza o elemento de preço dos serviços adicionais (excluindo suporte)
+                document.getElementById('additionalServicesPrice').textContent = `R$ ${additionalTotal.toFixed(2)}`;
+                
+                // Mostra ou esconde a seção de suporte
+                const supportPeriodSection = document.getElementById('supportPeriodSection');
+                
+                if (hasSupport) {
+                    supportPeriodSection.style.display = 'block';
+                    
+                    // Atualiza o elemento de preço do suporte
+                    document.getElementById('supportPrice').textContent = `R$ ${supportTotal.toFixed(2)}`;
+                    
+                    // Atualiza o valor mensal do suporte com desconto aplicado
+                    const supportPeriod = document.querySelector('input[name="support_period"]:checked').value;
+                    let monthlyText = '';
+                    
+                    if (supportPeriod === 'quarterly') {
+                        // 5% de desconto para trimestral
+                        monthlyText = `R$ ${(supportMonthlyValue * 0.95).toFixed(2)}/mês`;
+                    } else if (supportPeriod === 'yearly') {
+                        // 15% de desconto para anual
+                        monthlyText = `R$ ${(supportMonthlyValue * 0.85).toFixed(2)}/mês`;
+                    } else {
+                        // Mensal (sem desconto)
+                        monthlyText = `R$ ${supportMonthlyValue.toFixed(2)}/mês`;
+                    }
+                    
+                    document.getElementById('supportMonthlyPrice').textContent = monthlyText;
+                } else {
+                    supportPeriodSection.style.display = 'none';
+                }
+                
+                // Calcula o total geral (apenas pacote base + serviços adicionais, sem suporte)
+                total += additionalTotal;
+                
+                // Atualiza o elemento de preço total
+                document.getElementById('totalPrice').textContent = `R$ ${total.toFixed(2)}`;
+            }
+            
+            // Botão WhatsApp - Redirecionamento direto
+            // O comportamento do botão agora é gerenciado pelo arquivo whatsapp-redirect.js
         });
     </script>
+    
+    <!-- Script de redirecionamento para página de formulário -->
+    <script src="js/package-redirect.js"></script>
+    
+    <!-- Script para corrigir a exibição da seção de periodicidade do suporte -->
+    <script src="js/support-period-fix.js"></script>
+    
+    <!-- Script para indicação de rolagem no mobile e mudança de texto nos botões -->
+    <script src="js/mobile-scroll-indicator.js"></script>
+    
+    <!-- Estilos para indicação de rolagem no mobile -->
+    <link rel="stylesheet" href="js/mobile-scroll-indicator.css">
+    
+    <!-- Footer com CNPJ -->
+    <footer style="background-color: #1a1a1a; color: rgba(255, 255, 255, 0.7); padding: 20px 0; text-align: center; margin-top: 50px;">
+        <div class="container">
+            <p>&copy; 2025 KOLIBRA SOLUTIONS. Todos os direitos reservados.</p>
+            <p>CNPJ: 60.480.980/0001-07</p>
+        </div>
+    </footer>
 </body>
 </html>
