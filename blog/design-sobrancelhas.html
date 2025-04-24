@@ -371,104 +371,136 @@
         
         /* Footer */
         .footer {
-            background-color: #222;
+            background-color: var(--primary-color);
             color: var(--light-color);
-            padding: 30px 0;
-            text-align: center;
+            padding: 60px 0 30px;
         }
         
-        .footer p {
-            color: #bbb;
-            margin-bottom: 0;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
         }
         
-        .footer a {
+        .footer-about {
+            grid-column: 1 / 2;
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            max-width: 150px;
+            height: auto;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .footer-social a {
+            color: var(--light-color);
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-social a:hover {
             color: var(--secondary-color);
         }
         
-        .footer a:hover {
-            text-decoration: underline;
+        .footer-title {
+            color: var(--light-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
         }
         
-        /* Responsividade */
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-contact {
+            grid-column: 2 / 3;
+        }
+        
+        .footer-contact ul li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer-contact ul li i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-contact ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-contact ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+        
         @media (max-width: 992px) {
-            .blog-header h1 {
-                font-size: 2.2rem;
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
             
-            .blog-header p {
-                font-size: 1.1rem;
-            }
-            
-            .blog-main {
-                padding: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 0;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--primary-color);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 50px;
-                transition: var(--transition);
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-menu li {
-                margin: 15px 0;
-            }
-            
-            .nav-toggle {
-                display: block;
-            }
-            
-            .nav-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-            
-            .nav-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .nav-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-            
-            .blog-header {
-                padding: 120px 0 60px;
-            }
-            
-            .blog-main h2 {
-                font-size: 1.6rem;
-            }
-            
-            .blog-main h3 {
-                font-size: 1.3rem;
+            .footer-about {
+                grid-column: 1 / -1;
             }
         }
         
         @media (max-width: 576px) {
-            .blog-header h1 {
-                font-size: 1.8rem;
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
-            .blog-main {
-                padding: 20px;
+            .footer {
+                padding: 40px 0 20px;
             }
         }
     </style>
@@ -507,7 +539,7 @@
     <section class="blog-content">
         <div class="container blog-container">
             <div class="blog-main">
-                <img src="https://images.unsplash.com/photo-1600442715817-4d9c8b6c729d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Design de Sobrancelhas">
+                <img src="../img/design-sobrancelhas-capa.png" alt="Ilustração de uma profissional realizando design de sobrancelhas" style="width: 100%; height: auto; border-radius: 10px; margin: 20px 0; box-shadow: var(--shadow);">
                 
                 <h2>Introdução</h2>
                 <p>O design de sobrancelhas se tornou um dos serviços mais procurados no setor de beleza nos últimos anos. Não é para menos: um bom design pode transformar completamente a expressão facial, realçar o olhar e valorizar os traços naturais de uma pessoa.</p>
@@ -822,7 +854,59 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Kolibra Solutions. Todos os direitos reservados.</p>
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="../img/logo-new.png" alt="KOLIBRA SOLUTIONS - Logo" width="150" height="60">
+                    </div>
+                    <p>Transformamos pequenos negócios através de soluções digitais acessíveis e de alto impacto. Nossa missão é democratizar o acesso à tecnologia e ao design de qualidade.</p>
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/kolibrasolutions/" target="_blank" rel="noopener" aria-label="Instagram da Kolibra Solutions"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/kolibrasolutions/" target="_blank" rel="noopener" aria-label="LinkedIn da Kolibra Solutions"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.tiktok.com/@kolibrasolutions" target="_blank" rel="noopener" aria-label="TikTok da Kolibra Solutions"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://wa.me/5535999796570" target="_blank" rel="noopener" aria-label="WhatsApp da Kolibra Solutions"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <nav class="footer-links" aria-label="Links do rodapé">
+                    <h3 class="footer-title">Links Rápidos</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../portfolio.html">Portfólio</a></li>
+                        <li><a href="../construtor.html">Construtor de Pacotes</a></li>
+                        <li><a href="../segmentacao.html">Comece por Aqui</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="footer-contact" itemscope itemtype="https://schema.org/Organization">
+                    <h3 class="footer-title">Contato</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                                <span itemprop="streetAddress">Rua Julião Calixto de Abdala, 87, Quinta da Bela Vista</span>, 
+                                <span itemprop="addressLocality">Muzambinho</span>-<span itemprop="addressRegion">MG</span>
+                            </span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span><a href="tel:+5535999796570" itemprop="telephone">(35) 99979-6570</a></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:kolibrasolutions@gmail.com" itemprop="email">kolibrasolutions@gmail.com</a></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span itemprop="openingHours" content="Mo-Fr 08:00-12:00">Segunda a Sexta: 8h às 12h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 KOLIBRA SOLUTIONS. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
     
