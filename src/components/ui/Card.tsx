@@ -4,8 +4,8 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 
 interface CardProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   icon?: ReactNode;
   imageSrc?: string;
   imageAlt?: string;
@@ -45,10 +45,10 @@ export default function Card({
         )}
         
         {/* Card Title */}
-        <h3 className="text-xl font-bold text-primary mb-2">{title}</h3>
+        {title && <h3 className="text-xl font-bold text-primary mb-2">{title}</h3>}
         
         {/* Card Description */}
-        <p className="text-gray-600 mb-4">{description}</p>
+        {description && <p className="text-gray-600 mb-4">{description}</p>}
         
         {/* Additional Content */}
         {children}

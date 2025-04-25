@@ -1,19 +1,16 @@
 'use client';
 
 import { ReactNode } from 'react';
-import Image from 'next/image';
 import Button from '../ui/Button';
 
 interface HeroProps {
   title: string;
   subtitle: string;
   description?: string;
-  primaryButtonText?: string;
-  primaryButtonHref?: string;
-  secondaryButtonText?: string;
-  secondaryButtonHref?: string;
-  imageSrc?: string;
-  imageAlt?: string;
+  ctaText?: string;
+  ctaLink?: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
   stats?: Array<{icon: ReactNode, value: string, label: string}>;
   className?: string;
   align?: 'left' | 'center';
@@ -23,12 +20,10 @@ export default function Hero({
   title,
   subtitle,
   description,
-  primaryButtonText,
-  primaryButtonHref,
-  secondaryButtonText,
-  secondaryButtonHref,
-  imageSrc,
-  imageAlt = '',
+  ctaText,
+  ctaLink,
+  secondaryCtaText,
+  secondaryCtaLink,
   stats,
   className = '',
   align = 'center',
@@ -51,26 +46,26 @@ export default function Hero({
             </p>
           )}
           
-          {(primaryButtonText || secondaryButtonText) && (
+          {(ctaText || secondaryCtaText) && (
             <div className={`flex flex-wrap gap-4 mb-12 ${align === 'center' ? 'justify-center' : 'justify-start'}`}>
-              {primaryButtonText && primaryButtonHref && (
+              {ctaText && ctaLink && (
                 <Button 
-                  href={primaryButtonHref} 
+                  href={ctaLink} 
                   variant="secondary" 
                   size="lg"
                 >
-                  {primaryButtonText}
+                  {ctaText}
                 </Button>
               )}
               
-              {secondaryButtonText && secondaryButtonHref && (
+              {secondaryCtaText && secondaryCtaLink && (
                 <Button 
-                  href={secondaryButtonHref} 
+                  href={secondaryCtaLink} 
                   variant="outline" 
                   size="lg"
                   className="border-white text-white hover:bg-white hover:text-primary"
                 >
-                  {secondaryButtonText}
+                  {secondaryCtaText}
                 </Button>
               )}
             </div>
@@ -91,19 +86,6 @@ export default function Hero({
           )}
         </div>
       </div>
-      
-      {/* Background image or decoration */}
-      {imageSrc && (
-        <div className="absolute right-0 bottom-0 opacity-10 z-0">
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            width={600}
-            height={600}
-            className="object-contain"
-          />
-        </div>
-      )}
       
       {/* Curved bottom */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden">

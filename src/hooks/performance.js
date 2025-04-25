@@ -1,198 +1,153 @@
-import { useEffect, useState, useRef } from 'react';
+'use client';
 
-// Hook para detectar quando o componente está visível na tela
-export function useIntersectionObserver(
-  elementRef,
-  callback,
-  options = { threshold: 0.1, rootMargin: '0px' }
-) {
-  useEffect(() => {
-    if (!elementRef.current) return;
-    
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        callback(entry);
-      }
-    }, options);
-    
-    observer.observe(elementRef.current);
-    
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
-    };
-  }, [elementRef, callback, options]);
-}
+import { useEffect } from 'react';
 
-// Hook para lazy loading de componentes
-export function useLazyLoad(elementRef, callback, options = { threshold: 0.1 }) {
+/**
+ * Hook para otimizar o carregamento de recursos
+ * Implementa lazy loading para imagens e scripts
+ */
+export function useLazyLoading() {
   useEffect(() => {
-    if (!elementRef.current) return;
+    // Lazy load de imagens
+    const lazyImages = document.querySelectorAll('img.lazy');
     
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        callback();
-        observer.unobserve(elementRef.current);
-      }
-    }, options);
-    
-    observer.observe(elementRef.current);
-    
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
-    };
-  }, [elementRef, callback, options]);
-}
-
-// Hook para debounce de eventos (útil para otimizar eventos de scroll, resize, etc)
-export function useDebounce(value, delay) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-  
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-    
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-  
-  return debouncedValue;
-}
-
-// Hook para detectar o tamanho da tela e aplicar breakpoints responsivos
-export function useBreakpoint() {
-  const [breakpoint, setBreakpoint] = useState('');
-  
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      
-      if (width < 640) {
-        setBreakpoint('sm');
-      } else if (width >= 640 && width < 768) {
-        setBreakpoint('md');
-      } else if (width >= 768 && width < 1024) {
-        setBreakpoint('lg');
-      } else if (width >= 1024 && width < 1280) {
-        setBreakpoint('xl');
-      } else {
-        setBreakpoint('2xl');
-      }
-    };
-    
-    // Inicializar
-    handleResize();
-    
-    // Adicionar listener
-    window.addEventListener('resize', handleResize);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  
-  return breakpoint;
-}
-
-// Hook para animações de entrada
-export function useAnimateOnScroll(elementRef, animationClass = 'animate-fadeIn', threshold = 0.1) {
-  useEffect(() => {
-    if (!elementRef.current) return;
-    
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add(animationClass);
-        observer.unobserve(entry.target);
-      }
-    }, { threshold });
-    
-    observer.observe(elementRef.current);
-    
-    return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
-      }
-    };
-  }, [elementRef, animationClass, threshold]);
-}
-
-// Hook para otimizar a performance de formulários
-export function useFormOptimization(formRef) {
-  useEffect(() => {
-    if (!formRef.current) return;
-    
-    const form = formRef.current;
-    const inputs = form.querySelectorAll('input, textarea, select');
-    
-    // Prevenir múltiplos submits
-    let isSubmitting = false;
-    
-    const handleSubmit = (e) => {
-      if (isSubmitting) {
-        e.preventDefault();
-        return;
-      }
-      
-      isSubmitting = true;
-      
-      // Resetar o estado após 2 segundos
-      setTimeout(() => {
-        isSubmitting = false;
-      }, 2000);
-    };
-    
-    form.addEventListener('submit', handleSubmit);
-    
-    // Otimizar inputs para evitar re-renders desnecessários
-    inputs.forEach(input => {
-      input.addEventListener('blur', () => {
-        input.dataset.touched = 'true';
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const image = entry.target as HTMLImageElement;
+            if (image.dataset.src) {
+              image.src = image.dataset.src;
+              image.classList.remove('lazy');
+              imageObserver.unobserve(image);
+            }
+          }
+        });
       });
+
+      lazyImages.forEach(img => imageObserver.observe(img));
+    } else {
+      // Fallback para navegadores que não suportam IntersectionObserver
+      let lazyLoadThrottleTimeout: NodeJS.Timeout | null = null;
+      
+      function lazyLoad() {
+        if (lazyLoadThrottleTimeout) {
+          clearTimeout(lazyLoadThrottleTimeout);
+        }
+
+        lazyLoadThrottleTimeout = setTimeout(() => {
+          const scrollTop = window.scrollY;
+          lazyImages.forEach(img => {
+            const imgElement = img as HTMLImageElement;
+            if (imgElement.offsetTop < (window.innerHeight + scrollTop) && imgElement.dataset.src) {
+              imgElement.src = imgElement.dataset.src;
+              imgElement.classList.remove('lazy');
+            }
+          });
+          if (lazyImages.length === 0) { 
+            document.removeEventListener('scroll', lazyLoad);
+            window.removeEventListener('resize', lazyLoad);
+            window.removeEventListener('orientationChange', lazyLoad);
+          }
+        }, 20);
+      }
+
+      document.addEventListener('scroll', lazyLoad);
+      window.addEventListener('resize', lazyLoad);
+      window.addEventListener('orientationChange', lazyLoad);
+    }
+  }, []);
+}
+
+/**
+ * Hook para otimizar a performance de animações
+ * Utiliza requestAnimationFrame para animações suaves
+ */
+export function useSmoothAnimations() {
+  useEffect(() => {
+    // Detecta elementos com classe 'animate-on-scroll'
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    if ('IntersectionObserver' in window) {
+      const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Usa requestAnimationFrame para animações suaves
+            requestAnimationFrame(() => {
+              entry.target.classList.add('animated');
+              animationObserver.unobserve(entry.target);
+            });
+          }
+        });
+      }, { threshold: 0.1 });
+
+      animatedElements.forEach(el => animationObserver.observe(el));
+    }
+  }, []);
+}
+
+/**
+ * Hook para otimizar a navegação entre páginas
+ * Implementa prefetching de links visíveis
+ */
+export function usePrefetchLinks() {
+  useEffect(() => {
+    // Prefetch de links visíveis na viewport
+    const prefetchLinks = () => {
+      const links = document.querySelectorAll('a');
+      
+      if ('IntersectionObserver' in window) {
+        const linkObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const link = entry.target as HTMLAnchorElement;
+              const href = link.getAttribute('href');
+              
+              if (href && href.startsWith('/') && !link.hasAttribute('data-prefetched')) {
+                const prefetchLink = document.createElement('link');
+                prefetchLink.rel = 'prefetch';
+                prefetchLink.href = href;
+                document.head.appendChild(prefetchLink);
+                link.setAttribute('data-prefetched', 'true');
+              }
+              
+              linkObserver.unobserve(link);
+            }
+          });
+        });
+
+        links.forEach(link => linkObserver.observe(link));
+      }
+    };
+
+    prefetchLinks();
+    
+    // Prefetch novamente quando a página for rolada
+    window.addEventListener('scroll', prefetchLinks, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', prefetchLinks);
+    };
+  }, []);
+}
+
+/**
+ * Hook para otimizar o carregamento de fontes
+ * Implementa font-display: swap e preconnect
+ */
+export function useOptimizedFonts() {
+  useEffect(() => {
+    // Adiciona preconnect para domínios de fontes
+    const fontDomains = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com'];
+    
+    fontDomains.forEach(domain => {
+      if (!document.querySelector(`link[rel="preconnect"][href="${domain}"]`)) {
+        const preconnect = document.createElement('link');
+        preconnect.rel = 'preconnect';
+        preconnect.href = domain;
+        preconnect.crossOrigin = 'anonymous';
+        document.head.appendChild(preconnect);
+      }
     });
-    
-    return () => {
-      form.removeEventListener('submit', handleSubmit);
-    };
-  }, [formRef]);
-}
-
-// Hook para carregar scripts externos de forma otimizada
-export function useExternalScript(url, async = true, defer = true) {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = url;
-    script.async = async;
-    script.defer = defer;
-    
-    document.body.appendChild(script);
-    
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [url, async, defer]);
-}
-
-// Hook para otimizar o carregamento de imagens
-export function useOptimizedImage(src, options = { quality: 80, sizes: '100vw' }) {
-  const [optimizedSrc, setOptimizedSrc] = useState('');
-  
-  useEffect(() => {
-    if (!src) return;
-    
-    // Criar URL otimizada
-    const imgUrl = new URL(src, window.location.origin);
-    imgUrl.searchParams.append('q', options.quality.toString());
-    
-    setOptimizedSrc(imgUrl.toString());
-  }, [src, options.quality]);
-  
-  return {
-    src: optimizedSrc || src,
-    sizes: options.sizes,
-    loading: 'lazy',
-  };
+  }, []);
 }

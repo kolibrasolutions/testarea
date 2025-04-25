@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,14 +11,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Coluna 1: Logo e Sobre */}
           <div className="space-y-4">
-            <Link href="/" className="block mb-4">
-              <Image 
-                src="/images/logo-new.png" 
-                alt="KOLIBRA SOLUTIONS" 
-                width={150} 
-                height={50} 
-                className="h-[50px] w-auto"
-              />
+            <Link href="/" className="block mb-4 text-white font-bold text-xl">
+              KOLIBRA SOLUTIONS
             </Link>
             <p className="text-gray-300 text-sm">
               Soluções tecnológicas acessíveis para impulsionar pequenos negócios com grande impacto.
@@ -76,8 +69,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-300 hover:text-secondary transition-colors">
-                  Blog
+                <Link href="/contato" className="text-gray-300 hover:text-secondary transition-colors">
+                  Contato
                 </Link>
               </li>
               <li>
@@ -98,22 +91,22 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Nossos Serviços</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/servicos/web" className="text-gray-300 hover:text-secondary transition-colors">
+                <Link href="/construtor" className="text-gray-300 hover:text-secondary transition-colors">
                   Desenvolvimento Web
                 </Link>
               </li>
               <li>
-                <Link href="/servicos/branding" className="text-gray-300 hover:text-secondary transition-colors">
+                <Link href="/construtor" className="text-gray-300 hover:text-secondary transition-colors">
                   Branding e Identidade Visual
                 </Link>
               </li>
               <li>
-                <Link href="/servicos/suporte" className="text-gray-300 hover:text-secondary transition-colors">
+                <Link href="/construtor" className="text-gray-300 hover:text-secondary transition-colors">
                   Suporte Mensal
                 </Link>
               </li>
               <li>
-                <Link href="/servicos/consultoria" className="text-gray-300 hover:text-secondary transition-colors">
+                <Link href="/construtor" className="text-gray-300 hover:text-secondary transition-colors">
                   Consultoria em Processos
                 </Link>
               </li>

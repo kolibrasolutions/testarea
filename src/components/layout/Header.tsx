@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,15 +24,8 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="block">
-            <Image 
-              src="/images/logo-new.png" 
-              alt="KOLIBRA SOLUTIONS" 
-              width={150} 
-              height={50} 
-              className="h-[50px] w-auto"
-              priority
-            />
+          <Link href="/" className="block text-white font-bold text-xl">
+            KOLIBRA SOLUTIONS
           </Link>
           
           {/* Menu para desktop */}
@@ -51,10 +43,10 @@ export default function Header() {
               Portfólio
             </Link>
             <Link 
-              href="/blog" 
+              href="/contato" 
               className="text-white font-medium hover:text-secondary transition-colors"
             >
-              Blog
+              Contato
             </Link>
             <Link 
               href="/construtor" 
@@ -103,11 +95,11 @@ export default function Header() {
               Portfólio
             </Link>
             <Link 
-              href="/blog" 
+              href="/contato" 
               className="text-white font-medium hover:text-secondary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Blog
+              Contato
             </Link>
             <Link 
               href="/construtor" 

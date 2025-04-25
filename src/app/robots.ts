@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/'],
     },
-    sitemap: 'https://www.kolibrasolutions.com.br/sitemap.xml',
+    sitemap: 'https://kolibrasolutions.com.br/sitemap.xml',
   };
 }

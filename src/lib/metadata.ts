@@ -1,194 +1,133 @@
 import { Metadata } from 'next';
 
-// Função para gerar metadata para cada página de serviço
-export function generateServiceMetadata(
-  title: string,
-  description: string,
-  keywords: string[],
-  ogImage: string = '/images/share-image.jpg'
-): Metadata {
-  return {
-    title: `${title} | KOLIBRA SOLUTIONS`,
-    description,
-    keywords: ['Kolibra Solutions', ...keywords].join(', '),
-    openGraph: {
-      title: `${title} | KOLIBRA SOLUTIONS`,
-      description,
-      url: 'https://www.kolibrasolutions.com.br/',
-      siteName: 'Kolibra Solutions',
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-        },
-      ],
-      locale: 'pt_BR',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${title} | KOLIBRA SOLUTIONS`,
-      description,
-      images: [ogImage],
-    },
-    alternates: {
-      canonical: `https://www.kolibrasolutions.com.br/servicos/${title.toLowerCase().replace(/\s+/g, '-')}`,
-    },
-  };
-}
+// Configurações base de metadados para todo o site
+export const siteConfig = {
+  name: 'Kolibra Solutions',
+  description: 'Soluções digitais acessíveis para pequenos negócios',
+  url: 'https://kolibrasolutions.com.br',
+  ogImage: 'https://kolibrasolutions.com.br/og-image.jpg',
+  links: {
+    instagram: 'https://www.instagram.com/kolibrasolutions/',
+    linkedin: 'https://www.linkedin.com/company/kolibrasolutions/',
+    tiktok: 'https://www.tiktok.com/@kolibrasolutions',
+  },
+};
 
-// Metadados para a página inicial
+// Metadados base para todas as páginas
+export const baseMetadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [
+    'desenvolvimento web',
+    'sites para pequenos negócios',
+    'identidade visual',
+    'presença digital',
+    'marketing digital',
+    'websites acessíveis',
+    'Kolibra Solutions',
+  ],
+  authors: [{ name: 'Kolibra Solutions', url: siteConfig.url }],
+  creator: 'Kolibra Solutions',
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 1200,
+        height: 630,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: '@kolibrasolutions',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+  verification: {
+    google: 'verificação_google',
+  },
+  alternates: {
+    canonical: siteConfig.url,
+    languages: {
+      'pt-BR': siteConfig.url,
+    },
+  },
+};
+
+// Metadados específicos para a página inicial
 export const homeMetadata: Metadata = {
-  title: 'KOLIBRA SOLUTIONS - A solução certa para crescer | Soluções Digitais Acessíveis',
-  description: 'Soluções tecnológicas acessíveis para impulsionar pequenos negócios com grande impacto. Criação de sites, identidade visual e marketing digital para transformar seu negócio.',
-  keywords: 'Kolibra Solutions, soluções digitais, criação de sites, identidade visual, marketing digital, pequenos negócios, Muzambinho, desenvolvimento web, branding, suporte mensal',
-  openGraph: {
-    title: 'KOLIBRA SOLUTIONS - A solução certa para seu negócio',
-    description: 'Soluções tecnológicas acessíveis para impulsionar pequenos negócios com grandes resultados',
-    url: 'https://www.kolibrasolutions.com.br/',
-    siteName: 'Kolibra Solutions',
-    images: [
-      {
-        url: '/images/share-image.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'KOLIBRA SOLUTIONS - A solução certa para seu negócio',
-    description: 'Soluções tecnológicas acessíveis para impulsionar pequenos negócios com grandes resultados',
-    images: ['/images/share-image.jpg'],
-  },
+  ...baseMetadata,
+  title: 'Soluções Digitais para Pequenos Negócios',
+  description: 'Transforme sua presença online com websites, identidade visual e estratégias digitais acessíveis para pequenos negócios.',
   alternates: {
-    canonical: 'https://www.kolibrasolutions.com.br/',
+    canonical: siteConfig.url,
   },
 };
 
-// Metadados para a página de portfólio
+// Metadados específicos para a página de portfólio
 export const portfolioMetadata: Metadata = {
-  title: 'Portfólio | KOLIBRA SOLUTIONS - Nossos Projetos e Cases de Sucesso',
-  description: 'Conheça nossos projetos de desenvolvimento web, branding e marketing digital. Veja como ajudamos pequenos negócios a crescerem com soluções digitais acessíveis.',
-  keywords: 'portfólio Kolibra Solutions, projetos web, cases de sucesso, branding, identidade visual, sites responsivos, marketing digital, pequenos negócios',
-  openGraph: {
-    title: 'Portfólio | KOLIBRA SOLUTIONS - Nossos Projetos e Cases de Sucesso',
-    description: 'Conheça nossos projetos de desenvolvimento web, branding e marketing digital. Veja como ajudamos pequenos negócios a crescerem com soluções digitais acessíveis.',
-    url: 'https://www.kolibrasolutions.com.br/portfolio',
-    siteName: 'Kolibra Solutions',
-    images: [
-      {
-        url: '/images/portfolio-share.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Portfólio | KOLIBRA SOLUTIONS - Nossos Projetos e Cases de Sucesso',
-    description: 'Conheça nossos projetos de desenvolvimento web, branding e marketing digital. Veja como ajudamos pequenos negócios a crescerem com soluções digitais acessíveis.',
-    images: ['/images/portfolio-share.jpg'],
-  },
+  ...baseMetadata,
+  title: 'Portfólio | Nossos Projetos',
+  description: 'Conheça nossos projetos de desenvolvimento web, identidade visual e estratégias digitais para pequenos negócios.',
   alternates: {
-    canonical: 'https://www.kolibrasolutions.com.br/portfolio',
+    canonical: `${siteConfig.url}/portfolio`,
   },
 };
 
-// Metadados para a página de construtor
-export const constructorMetadata: Metadata = {
-  title: 'Construtor de Pacotes | KOLIBRA SOLUTIONS - Monte seu Pacote Personalizado',
-  description: 'Monte seu pacote personalizado de serviços digitais de acordo com as necessidades do seu negócio. Desenvolvimento web, branding e marketing digital com preços acessíveis.',
-  keywords: 'construtor de pacotes, serviços personalizados, desenvolvimento web, branding, marketing digital, preços acessíveis, pequenos negócios, Kolibra Solutions',
-  openGraph: {
-    title: 'Construtor de Pacotes | KOLIBRA SOLUTIONS - Monte seu Pacote Personalizado',
-    description: 'Monte seu pacote personalizado de serviços digitais de acordo com as necessidades do seu negócio. Desenvolvimento web, branding e marketing digital com preços acessíveis.',
-    url: 'https://www.kolibrasolutions.com.br/construtor',
-    siteName: 'Kolibra Solutions',
-    images: [
-      {
-        url: '/images/construtor-share.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Construtor de Pacotes | KOLIBRA SOLUTIONS - Monte seu Pacote Personalizado',
-    description: 'Monte seu pacote personalizado de serviços digitais de acordo com as necessidades do seu negócio. Desenvolvimento web, branding e marketing digital com preços acessíveis.',
-    images: ['/images/construtor-share.jpg'],
-  },
+// Metadados específicos para a página do construtor
+export const construtorMetadata: Metadata = {
+  ...baseMetadata,
+  title: 'Construtor de Pacotes | Monte sua Solução Digital',
+  description: 'Monte seu pacote personalizado de serviços digitais de acordo com as necessidades do seu negócio.',
   alternates: {
-    canonical: 'https://www.kolibrasolutions.com.br/construtor',
+    canonical: `${siteConfig.url}/construtor`,
   },
 };
 
-// Metadados para a página de diagnóstico
-export const diagnosticMetadata: Metadata = {
-  title: 'Diagnóstico Digital Gratuito | KOLIBRA SOLUTIONS - Avalie seu Negócio',
-  description: 'Receba um diagnóstico digital gratuito para seu negócio. Avalie sua presença online e descubra oportunidades de crescimento com a Kolibra Solutions.',
-  keywords: 'diagnóstico digital gratuito, avaliação de presença online, oportunidades de crescimento, marketing digital, pequenos negócios, Kolibra Solutions',
-  openGraph: {
-    title: 'Diagnóstico Digital Gratuito | KOLIBRA SOLUTIONS - Avalie seu Negócio',
-    description: 'Receba um diagnóstico digital gratuito para seu negócio. Avalie sua presença online e descubra oportunidades de crescimento com a Kolibra Solutions.',
-    url: 'https://www.kolibrasolutions.com.br/diagnostico',
-    siteName: 'Kolibra Solutions',
-    images: [
-      {
-        url: '/images/diagnostico-share.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Diagnóstico Digital Gratuito | KOLIBRA SOLUTIONS - Avalie seu Negócio',
-    description: 'Receba um diagnóstico digital gratuito para seu negócio. Avalie sua presença online e descubra oportunidades de crescimento com a Kolibra Solutions.',
-    images: ['/images/diagnostico-share.jpg'],
-  },
+// Metadados específicos para a página de contato
+export const contatoMetadata: Metadata = {
+  ...baseMetadata,
+  title: 'Contato | Fale Conosco',
+  description: 'Entre em contato com a Kolibra Solutions para transformar a presença digital do seu negócio.',
   alternates: {
-    canonical: 'https://www.kolibrasolutions.com.br/diagnostico',
+    canonical: `${siteConfig.url}/contato`,
   },
 };
 
-// Metadados para a página de contato
-export const contactMetadata: Metadata = {
-  title: 'Contato | KOLIBRA SOLUTIONS - Fale Conosco',
-  description: 'Entre em contato com a Kolibra Solutions. Estamos prontos para ajudar a transformar seu negócio com soluções digitais acessíveis e de qualidade.',
-  keywords: 'contato Kolibra Solutions, fale conosco, orçamento, soluções digitais, atendimento, Muzambinho, pequenos negócios',
-  openGraph: {
-    title: 'Contato | KOLIBRA SOLUTIONS - Fale Conosco',
-    description: 'Entre em contato com a Kolibra Solutions. Estamos prontos para ajudar a transformar seu negócio com soluções digitais acessíveis e de qualidade.',
-    url: 'https://www.kolibrasolutions.com.br/contato',
-    siteName: 'Kolibra Solutions',
-    images: [
-      {
-        url: '/images/contato-share.jpg',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'pt_BR',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contato | KOLIBRA SOLUTIONS - Fale Conosco',
-    description: 'Entre em contato com a Kolibra Solutions. Estamos prontos para ajudar a transformar seu negócio com soluções digitais acessíveis e de qualidade.',
-    images: ['/images/contato-share.jpg'],
-  },
+// Metadados específicos para a página de diagnóstico
+export const diagnosticoMetadata: Metadata = {
+  ...baseMetadata,
+  title: 'Diagnóstico Digital | Avalie seu Negócio',
+  description: 'Faça um diagnóstico gratuito da presença digital do seu negócio e descubra oportunidades de melhoria.',
   alternates: {
-    canonical: 'https://www.kolibrasolutions.com.br/contato',
+    canonical: `${siteConfig.url}/diagnostico`,
   },
 };
