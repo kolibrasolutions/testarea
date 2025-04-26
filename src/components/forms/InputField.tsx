@@ -1,31 +1,26 @@
-'use client';
 
-import { useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+import React from 'react';
 
-interface InputFieldProps {
+interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
-  type?: string;
-  placeholder?: string;
-  required?: boolean;
   error?: string;
   className?: string;
 }
 
-export default function InputField({
-  id,
-  label,
-  type = 'text',
-  placeholder = '',
-  required = false,
-  error,
-  className = '',
-}: InputFieldProps) {
-  const [isFocused, setIsFocused] = useState(false);
-  
+const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>((
+  {
+    id,
+    label,
+    type = 'text',
+    placeholder = '',
+    required = false,
+    error,
+    className = '',
+    ...props // Captura o resto das props, incluindo as do react-hook-form
+  },
+  ref // Encaminha a ref para o input
+) => {
   return (
     <div className={`mb-4 ${className}`}>
       <label 
@@ -42,6 +37,8 @@ export default function InputField({
           name={id}
           type={type}
           placeholder={placeholder}
+          ref={ref} // Usa a ref encaminhada
+          {...props} // Espalha as props restantes (incluindo as do register)
           className={`
             block w-full px-4 py-3 rounded-md border 
             ${error 
@@ -50,8 +47,6 @@ export default function InputField({
             }
             focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all duration-200
           `}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
           aria-invalid={error ? 'true' : 'false'}
           aria-describedby={error ? `${id}-error` : undefined}
         />
@@ -64,4 +59,9 @@ export default function InputField({
       )}
     </div>
   );
-}
+});
+
+InputField.displayName = 'InputField';
+
+export default InputField;
+

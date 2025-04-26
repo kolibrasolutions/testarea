@@ -64,7 +64,7 @@ export default function Portfolio() {
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Web Design</span>
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Redes Sociais</span>
               </div>
-              <Button variant="outline" size="sm" href="/portfolio/barbearia-vintage">
+              <Button variant="outline" size="sm">
                 Ver Detalhes
               </Button>
             </div>
@@ -90,7 +90,7 @@ export default function Portfolio() {
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">E-commerce</span>
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Marketing Digital</span>
               </div>
-              <Button variant="outline" size="sm" href="/portfolio/cafe-aroma">
+              <Button variant="outline" size="sm">
                 Ver Detalhes
               </Button>
             </div>
@@ -116,7 +116,7 @@ export default function Portfolio() {
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Marketing Digital</span>
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Redes Sociais</span>
               </div>
-              <Button variant="outline" size="sm" href="/portfolio/beleza-natural">
+              <Button variant="outline" size="sm">
                 Ver Detalhes
               </Button>
             </div>
@@ -142,7 +142,7 @@ export default function Portfolio() {
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">UX/UI</span>
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Sistema de Reservas</span>
               </div>
-              <Button variant="outline" size="sm" href="/portfolio/sabor-caseiro">
+              <Button variant="outline" size="sm">
                 Ver Detalhes
               </Button>
             </div>
@@ -168,7 +168,7 @@ export default function Portfolio() {
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Branding</span>
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">SEO</span>
               </div>
-              <Button variant="outline" size="sm" href="/portfolio/moda-consciente">
+              <Button variant="outline" size="sm">
                 Ver Detalhes
               </Button>
             </div>
@@ -194,7 +194,7 @@ export default function Portfolio() {
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">Sistema de Agendamento</span>
                 <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded">SEO Local</span>
               </div>
-              <Button variant="outline" size="sm" href="/portfolio/vida-plena">
+              <Button variant="outline" size="sm">
                 Ver Detalhes
               </Button>
             </div>
@@ -215,7 +215,7 @@ export default function Portfolio() {
             imageSrc="/images/categories/branding.jpg"
             imageAlt="Branding e Identidade Visual"
           >
-            <Button href="/portfolio/categoria/branding" variant="primary" className="w-full">
+            <Button variant="primary" className="w-full">
               Ver Projetos
             </Button>
           </Card>
@@ -226,7 +226,7 @@ export default function Portfolio() {
             imageSrc="/images/categories/websites.jpg"
             imageAlt="Websites e Landing Pages"
           >
-            <Button href="/portfolio/categoria/websites" variant="primary" className="w-full">
+            <Button variant="primary" className="w-full">
               Ver Projetos
             </Button>
           </Card>
@@ -237,7 +237,7 @@ export default function Portfolio() {
             imageSrc="/images/categories/ecommerce.jpg"
             imageAlt="E-commerce"
           >
-            <Button href="/portfolio/categoria/ecommerce" variant="primary" className="w-full">
+            <Button variant="primary" className="w-full">
               Ver Projetos
             </Button>
           </Card>
@@ -248,7 +248,7 @@ export default function Portfolio() {
             imageSrc="/images/categories/marketing.jpg"
             imageAlt="Marketing Digital"
           >
-            <Button href="/portfolio/categoria/marketing" variant="primary" className="w-full">
+            <Button variant="primary" className="w-full">
               Ver Projetos
             </Button>
           </Card>
@@ -259,7 +259,7 @@ export default function Portfolio() {
             imageSrc="/images/categories/kits.jpg"
             imageAlt="Kits Segmentados"
           >
-            <Button href="/portfolio/categoria/kits" variant="primary" className="w-full">
+            <Button variant="primary" className="w-full">
               Ver Projetos
             </Button>
           </Card>
@@ -270,7 +270,7 @@ export default function Portfolio() {
             imageSrc="/images/categories/consultoria.jpg"
             imageAlt="Consultoria em Processos"
           >
-            <Button href="/portfolio/categoria/consultoria" variant="primary" className="w-full">
+            <Button variant="primary" className="w-full">
               Ver Projetos
             </Button>
           </Card>

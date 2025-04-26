@@ -1,34 +1,23 @@
-'use client';
 
-import { useState } from 'react';
+import React from 'react';
 
-interface CheckboxFieldProps {
+interface CheckboxFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   id: string;
   label: string;
-  checked?: boolean;
-  onChange?: (checked: boolean) => void;
   error?: string;
   className?: string;
 }
 
-export default function CheckboxField({
-  id,
-  label,
-  checked = false,
-  onChange,
-  error,
-  className = '',
-}: CheckboxFieldProps) {
-  const [isChecked, setIsChecked] = useState(checked);
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newChecked = e.target.checked;
-    setIsChecked(newChecked);
-    if (onChange) {
-      onChange(newChecked);
-    }
-  };
-  
+const CheckboxField = React.forwardRef<HTMLInputElement, CheckboxFieldProps>((
+  {
+    id,
+    label,
+    error,
+    className = '',
+    ...props // Captura o resto das props, incluindo as do react-hook-form
+  },
+  ref // Encaminha a ref para o input
+) => {
   return (
     <div className={`mb-4 ${className}`}>
       <div className="flex items-start">
@@ -37,8 +26,8 @@ export default function CheckboxField({
             id={id}
             name={id}
             type="checkbox"
-            checked={isChecked}
-            onChange={handleChange}
+            ref={ref} // Usa a ref encaminhada
+            {...props} // Espalha as props restantes (incluindo as do register)
             className={`
               h-5 w-5 rounded border-gray-300 text-primary focus:ring-primary
               ${error ? 'border-red-500' : ''}
@@ -61,4 +50,9 @@ export default function CheckboxField({
       )}
     </div>
   );
-}
+});
+
+CheckboxField.displayName = 'CheckboxField';
+
+export default CheckboxField;
+
